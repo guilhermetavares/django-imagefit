@@ -1,6 +1,14 @@
 from __future__ import division
 from imagefit.conf import settings
-from PIL import Image as PilImage
+
+try:
+    from PIL import Image as PilImage
+except ImportError:
+    try:
+        import Image as PilImage
+    except:
+        # django
+        from django.utils.image import Image as PilImage
 
 import mimetypes
 try:
